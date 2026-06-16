@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UnderGrads Media – Your One Stop Solution for Business Consulting & Execution</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A227;
+    --dark: #1a1a1a;
+    --text: #2c2c2c;
+    --muted: #666;
+    --orange: #E85D2F;
+    --orange-btn: #E8713C;
+    --navy: #1C2B4A;
+    --light-bg: #fafaf8;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    left: 0; top: 0;
+    width: 200px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 32px 28px;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(8px);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: -1px;
+    margin-bottom: 40px;
+    line-height: 1;
+  }
+
+  .nav-links { display: flex; flex-direction: column; gap: 6px; }
+
+  .nav-links a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 14px;
+    font-weight: 400;
+    padding: 6px 0;
+    transition: color 0.2s;
+  }
+
+  .nav-links a.active { color: var(--orange); font-weight: 500; }
+  .nav-links a:hover { color: var(--dark); }
+
+  .nav-links a .nav-icon {
+    width: 16px; height: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+  }
+
+  .nav-links a .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--orange);
+    margin-left: 4px;
+    display: none;
+  }
+
+  .nav-links a.active .dot { display: block; }
+
+  .whatsapp-btn {
+    position: fixed;
+    top: 28px;
+    right: 28px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--dark);
+    text-decoration: none;
+    z-index: 200;
+    font-weight: 500;
+  }
+
+  .whatsapp-btn svg { width: 22px; height: 22px; }
+
+  /* ── MAIN CONTENT ── */
+  main { margin-left: 200px; }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 80px 80px;
+    background: var(--white);
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 500px;
+    background: radial-gradient(ellipse at center top, #F5D76E 0%, #F9E89A 30%, rgba(255,230,100,0.2) 60%, transparent 80%);
+    border-radius: 50%;
+    z-index: 0;
+  }
+
+  .hero-logo {
+    position: relative;
+    z-index: 1;
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 60px;
+    letter-spacing: -2px;
+  }
+
+  .hero-logo span { display: block; }
+  .hero-logo .ug-sub { font-size: 36px; }
+
+  .hero-title {
+    position: relative;
+    z-index: 1;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 5vw, 72px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--dark);
+    max-width: 900px;
+    margin-bottom: 28px;
+  }
+
+  .hero-sub {
+    position: relative;
+    z-index: 1;
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 48px;
+  }
+
+  .btn-primary {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--orange-btn);
+    color: white;
+    text-decoration: none;
+    padding: 16px 36px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,113,60,0.3); }
+
+  .btn-primary .bulb { font-size: 18px; }
+
+  /* ── CLIENTS STRIP ── */
+  .clients-strip {
+    padding: 40px 80px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+  }
+
+  .clients-scroll {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    animation: scroll-x 20s linear infinite;
+    width: max-content;
+  }
+
+  .clients-scroll img,
+  .client-logo {
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(20%);
+    opacity: 0.85;
+    transition: opacity 0.2s;
+  }
+
+  .client-logo {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--muted);
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  @keyframes scroll-x {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── SECTION BASE ── */
+  .section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    padding: 100px 80px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .section.reverse { direction: rtl; }
+  .section.reverse > * { direction: ltr; }
+
+  .section-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 3.5vw, 54px);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--dark);
+    margin-bottom: 24px;
+  }
+
+  .section-text p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 36px;
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--navy);
+    color: white;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn-secondary:hover { background: #243660; transform: translateY(-1px); }
+
+  .btn-secondary .arrow {
+    width: 28px; height: 28px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  /* ── SERVICE CARD ── */
+  .service-visual {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .service-bg {
+    border-radius: 20px;
+    padding: 32px;
+    min-height: 360px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .service-bg.purple-bg {
+    background: linear-gradient(135deg, #E8E0FF 0%, #C4B5FD 100%);
+  }
+
+  .service-bg.green-bg {
+    background: linear-gradient(135deg, #D1FAE5 0%, #6EE7B7 100%);
+  }
+
+  .service-bg.slate-bg {
+    background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%);
+  }
+
+  .services-list {
+    background: #1a1a2e;
+    border-radius: 14px;
+    padding: 20px 24px;
+    width: 100%;
+  }
+
+  .services-list li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 11px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 14px;
+    color: #e0e0e0;
+    list-style: none;
+  }
+
+  .services-list li:last-child { border-bottom: none; }
+
+  .service-icon {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  /* phone mockup */
+  .phone-wrap {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 28px 28px 0;
+  }
+
+  .phone-mock {
+    flex: 1;
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    border: 1px solid #e0e0e0;
+  }
+
+  .phone-header {
+    background: #f5f5f5;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: #666;
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  .phone-dot { width: 7px; height: 7px; border-radius: 50%; }
+
+  .phone-body { padding: 16px 14px; }
+
+  .phone-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 12px;
+    color: #555;
+  }
+
+  .phone-row .val { font-weight: 600; color: #111; }
+
+  .phone-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  .badge-green { background: #d1fae5; color: #065f46; }
+  .badge-blue  { background: #dbeafe; color: #1d4ed8; }
+
+  .dark-phone {
+    flex: 1;
+    background: #0f0f1a;
+    border-radius: 20px;
+    padding: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  }
+
+  .dark-phone .dp-label { font-size: 10px; color: #888; margin-bottom: 4px; }
+  .dark-phone .dp-value { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 2px; }
+  .dark-phone .dp-change { font-size: 11px; color: #4ade80; }
+
+  /* task board mockup */
+  .task-board {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #e8e8e8;
+  }
+
+  .task-board-header {
+    background: #f8fafc;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e8e8e8;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+  }
+
+  .task-table { width: 100%; border-collapse: collapse; }
+
+  .task-table th {
+    font-size: 11px;
+    color: #9ca3af;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 10px 14px;
+    text-align: left;
+    background: #fafafa;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .task-table td {
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #374151;
+    border-bottom: 1px solid #f9fafb;
+  }
+
+  .status-pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+  }
+
+  .pill-done  { background: #d1fae5; color: #065f46; }
+  .pill-prog  { background: #fef3c7; color: #92400e; }
+  .pill-todo  { background: #f3f4f6; color: #374151; }
+
+  /* ── WORK SECTION ── */
+  #work {
+    background: #E85D2F;
+    padding: 100px 80px;
+    color: white;
+  }
+
+  #work h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 4vw, 60px);
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  #work .work-sub {
+    text-align: center;
+    font-size: 15px;
+    opacity: 0.85;
+    margin-bottom: 64px;
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .work-card {
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    min-height: 260px;
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+
+  .work-card:hover { transform: translateY(-4px); }
+
+  .work-card-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .work-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%);
+  }
+
+  .work-card-body {
+    position: relative;
+    z-index: 1;
+    padding: 28px;
+  }
+
+  .work-card-body h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: white;
+    line-height: 1.3;
+  }
+
+  /* work card colour backgrounds as placeholder */
+  .wc-yellow { background: linear-gradient(135deg, #F59E0B, #FBBF24); }
+  .wc-teal   { background: linear-gradient(135deg, #0D9488, #14B8A6); }
+  .wc-orange { background: linear-gradient(135deg, #EA580C, #F97316); }
+  .wc-warm   { background: linear-gradient(135deg, #9CA3AF, #6B7280); }
+
+  /* ── EXPERIENCE / ABOUT ── */
+  #experience {
+    padding: 100px 80px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .exp-header {
+    margin-bottom: 64px;
+  }
+
+  .exp-header .eyebrow {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--orange);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .exp-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 5vw, 76px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--dark);
+  }
+
+  .exp-header h2 span { color: var(--orange); }
+
+  .exp-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .exp-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .exp-tab {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--muted);
+    padding: 12px 0;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    transition: color 0.2s;
+  }
+
+  .exp-tab.active { color: var(--dark); font-weight: 500; }
+  .exp-tab:hover { color: var(--dark); }
+
+  .exp-content p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 16px;
+  }
+
+  .stats-col {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .stat-item .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 400;
+    color: var(--orange);
+    line-height: 1;
+  }
+
+  .stat-item .stat-label {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    color: white;
+    padding: 60px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+  }
+
+  footer .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  footer p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+
+  footer h4 { font-size: 13px; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 16px; color: rgba(255,255,255,0.9); }
+
+  footer ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+  footer ul li a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+
+  footer ul li a:hover { color: white; }
+
+  .footer-bottom {
+    background: var(--dark);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 20px 80px;
+    margin-left: 200px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* dashboard mockup for tech section */
+  .dash-mock {
+    background: #0f1520;
+    border-radius: 16px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  }
+
+  .dash-topbar {
+    background: #1a2235;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .dash-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dd-red { background: #ff5f57; }
+  .dd-yel { background: #ffbd2e; }
+  .dd-grn { background: #28ca41; }
+
+  .dash-body {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    min-height: 220px;
+  }
+
+  .dash-sidebar {
+    background: #151e2f;
+    padding: 16px 0;
+    border-right: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .dash-nav-item {
+    padding: 9px 18px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .dash-nav-item.active { background: rgba(255,255,255,0.06); color: white; }
+  .dash-nav-item:hover { background: rgba(255,255,255,0.04); }
+
+  .dash-main { padding: 20px; }
+
+  .dash-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .dash-card {
+    background: #1e2a3f;
+    border-radius: 8px;
+    padding: 14px;
+  }
+
+  .dash-card .dc-label { font-size: 10px; color: rgba(255,255,255,0.4); margin-bottom: 6px; }
+  .dash-card .dc-value { font-size: 20px; font-weight: 600; color: white; }
+  .dash-card .dc-sub { font-size: 10px; color: #4ade80; margin-top: 2px; }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #f5f5f5; }
+  ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- WhatsApp button -->
+<a class="whatsapp-btn" href="#">
+  <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  Chat with us
+</a>
+
+<!-- Sidebar Nav -->
+<nav>
+  <div class="nav-logo">UG</div>
+  <div class="nav-links">
+    <a href="#home" class="active nav-link">
+      <span class="nav-icon">🏠</span> Home <span class="dot"></span>
+    </a>
+    <a href="#service" class="nav-link">
+      <span class="nav-icon">⚙️</span> Service
+    </a>
+    <a href="#work" class="nav-link">
+      <span class="nav-icon">💼</span> Work
+    </a>
+    <a href="#experience" class="nav-link">
+      <span class="nav-icon">⭐</span> Experience
+    </a>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-glow"></div>
+    <div class="hero-logo">UG</div>
+    <h1 class="hero-title">Your One Stop Solution for Business Consulting &amp; Execution.</h1>
+    <p class="hero-sub">From planning to implementation in media, design, HR, marketing and tech We simplify challenges with creativity, communication and confidence</p>
+    <a href="#service" class="btn-primary">
+      <span class="bulb">💡</span> Let's Build
+    </a>
+  </section>
+
+  <!-- CLIENTS STRIP -->
+  <section id="service" class="clients-strip">
+    <div class="clients-scroll">
+      <!-- Row 1 -->
+      <div class="client-logo">🗳️ Election Commission</div>
+      <div class="client-logo">🏠 Goodbye Hostels</div>
+      <div class="client-logo">🏦 HDFC Bank Parivartan</div>
+      <div class="client-logo">📚 Newton Edwise</div>
+      <div class="client-logo">🔤 Письма</div>
+      <div class="client-logo">🌿 SAARAS</div>
+      <div class="client-logo">💡 SIDBI</div>
+      <div class="client-logo">☀️ NEergy Solar</div>
+      <!-- Duplicate for seamless loop -->
+      <div class="client-logo">🗳️ Election Commission</div>
+      <div class="client-logo">🏠 Goodbye Hostels</div>
+      <div class="client-logo">🏦 HDFC Bank Parivartan</div>
+      <div class="client-logo">📚 Newton Edwise</div>
+      <div class="client-logo">🔤 Письма</div>
+      <div class="client-logo">🌿 SAARAS</div>
+      <div class="client-logo">💡 SIDBI</div>
+      <div class="client-logo">☀️ NEergy Solar</div>
+    </div>
+  </section>
+
+  <!-- SERVICE 1: Design & Media -->
+  <div class="section">
+    <div class="section-text">
+      <h2>Design &amp; Media Production</h2>
+      <p>Creative visuals that build trust and connect with your customers. Photos and videos are today's strongest tools to connect with your customers. At UnderGrads, we create high quality designs and visuals that build trust, tell your story, and make your audience fall in love with your brand.</p>
+      <a href="#" class="btn-secondary">I need this <span class="arrow">→</span></a>
+    </div>
+    <div class="service-visual">
+      <div class="service-bg purple-bg">
+        <ul class="services-list">
+          <li><span class="service-icon">📣</span> Social Media Management</li>
+          <li><span class="service-icon">🎨</span> Logo &amp; Branding</li>
+          <li><span class="service-icon">📸</span> Product Photoshoot</li>
+          <li><span class="service-icon">🎬</span> Videography &amp; Documentaries</li>
+          <li><span class="service-icon">📦</span> Packaging Design</li>
+          <li><span class="service-icon">📋</span> IEC Material &amp; Marketing Collateral</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICE 2: Technology -->
+  <div class="section reverse">
+    <div class="section-text">
+      <h2>Technology &amp; Operational Solutions</h2>
+      <p>Tech enabled and user friendly solutions to bring you closer to your customers while taking care of real time operations. From websites to apps, and from digital marketing to data management, we make your business future ready.</p>
+      <a href="#" class="btn-secondary">I need this <span class="arrow">→</span></a>
+    </div>
+    <div class="service-visual">
+      <div class="service-bg green-bg" style="padding:0;flex-direction:column;gap:0;">
+        <div class="phone-wrap" style="flex:1;">
+          <div class="phone-mock">
+            <div class="phone-header">
+              <div class="phone-dot" style="background:#ff5f57"></div>
+              <div class="phone-dot" style="background:#ffbd2e"></div>
+              <div class="phone-dot" style="background:#28ca41"></div>
+              <span style="margin-left:4px">Personal details</span>
+            </div>
+            <div class="phone-body">
+              <div style="font-size:13px;font-weight:600;margin-bottom:12px;color:#111;">Personal details</div>
+              <div class="phone-row"><span>Full Name</span><span class="val">Priya Sharma</span></div>
+              <div class="phone-row"><span>Status</span><span class="val"><span class="phone-badge badge-green">Active</span></span></div>
+              <div class="phone-row"><span>Plan</span><span class="val"><span class="phone-badge badge-blue">Premium</span></span></div>
+            </div>
+          </div>
+          <div class="dark-phone">
+            <div class="dp-label">Portfolio Value</div>
+            <div class="dp-value">₹30,987</div>
+            <div class="dp-change">↑ 12% this week</div>
+            <div style="margin-top:12px;height:50px;background:linear-gradient(to top,#4ade8033,transparent);border-radius:6px;display:flex;align-items:flex-end;gap:2px;padding:4px;">
+              <div style="flex:1;background:#4ade80;border-radius:2px 2px 0 0;height:30%"></div>
+              <div style="flex:1;background:#4ade80;border-radius:2px 2px 0 0;height:50%"></div>
+              <div style="flex:1;background:#4ade80;border-radius:2px 2px 0 0;height:40%"></div>
+              <div style="flex:1;background:#4ade80;border-radius:2px 2px 0 0;height:70%"></div>
+              <div style="flex:1;background:#4ade80;border-radius:2px 2px 0 0;height:60%"></div>
+              <div style="flex:1;background:#4ade80;border-radius:2px 2px 0 0;height:90%"></div>
+              <div style="flex:1;background:#4ade80;border-radius:2px 2px 0 0;height:80%"></div>
+            </div>
+          </div>
+        </div>
+        <ul class="services-list" style="margin:0 28px 28px;border-radius:14px;">
+          <li><span class="service-icon">🌐</span> Static Website Development</li>
+          <li><span class="service-icon">⚡</span> Functional / Dynamic Websites</li>
+          <li><span class="service-icon">📱</span> Android Mobile Apps</li>
+          <li><span class="service-icon">🗂️</span> ERP Solutions</li>
+          <li><span class="service-icon">📊</span> Data Analytics &amp; Reporting</li>
+          <li><span class="service-icon">📈</span> Digital Marketing</li>
+          <li><span class="service-icon">🎪</span> Event Management Support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICE 3: Strategy -->
+  <div class="section">
+    <div class="section-text">
+      <h2>Strategy &amp; Business Consulting</h2>
+      <p>Businesses often get stuck with bottlenecks. We step in with deep discussions, brainstorming, and execution support to solve challenges across HR, finance, marketing, and operations so you can focus on growth.</p>
+      <a href="#" class="btn-secondary">I need this <span class="arrow">→</span></a>
+    </div>
+    <div class="service-visual">
+      <div class="service-bg slate-bg" style="padding:0;flex-direction:column;">
+        <div class="task-board" style="margin:28px 28px 0;">
+          <div class="task-board-header">Task Management / List view</div>
+          <table class="task-table">
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Assignee</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Brand strategy deck</td>
+                <td>Rahul M.</td>
+                <td><span class="status-pill pill-done">Done</span></td>
+              </tr>
+              <tr>
+                <td>HR policy update</td>
+                <td>Sneha K.</td>
+                <td><span class="status-pill pill-prog">In progress</span></td>
+              </tr>
+              <tr>
+                <td>Q3 marketing plan</td>
+                <td>Arjun D.</td>
+                <td><span class="status-pill pill-prog">In progress</span></td>
+              </tr>
+              <tr>
+                <td>Financial review</td>
+                <td>Priya S.</td>
+                <td><span class="status-pill pill-todo">To do</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <ul class="services-list" style="margin:16px 28px 28px;border-radius:14px;">
+          <li><span class="service-icon">📊</span> Business Consulting &amp; Growth Strategy</li>
+          <li><span class="service-icon">👥</span> Manpower Hiring &amp; HR Solutions</li>
+          <li><span class="service-icon">🔍</span> Root Cause Problem Solving</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORK -->
+  <section id="work">
+    <h2>Crafting success with our clients</h2>
+    <p class="work-sub">Showcasing collaborations that blend creativity, strategy and innovation into impactful results.</p>
+    <div class="work-grid">
+      <div class="work-card wc-yellow">
+        <div class="work-card-overlay"></div>
+        <div class="work-card-body">
+          <h3>Transforming Saraas Group Into A Modern Brand With Tech, HR &amp; Marketing Support</h3>
+        </div>
+      </div>
+      <div class="work-card wc-teal">
+        <div class="work-card-overlay"></div>
+        <div class="work-card-body">
+          <h3>Building YELO Into A Modern Coworking &amp; Community Brand</h3>
+        </div>
+      </div>
+      <div class="work-card wc-orange">
+        <div class="work-card-overlay"></div>
+        <div class="work-card-body">
+          <h3>Elevating Tantashala From Local Handloom Store To A Digital First Fashion Brand</h3>
+        </div>
+      </div>
+      <div class="work-card wc-warm">
+        <div class="work-card-overlay"></div>
+        <div class="work-card-body">
+          <h3>UnderGrads X Government Initiatives</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE / ABOUT -->
+  <section id="experience">
+    <div class="exp-header">
+      <div class="eyebrow">About</div>
+      <h2>Partner<br>For <span>Digital Solutions</span></h2>
+    </div>
+    <div class="exp-body">
+      <div class="exp-tabs">
+        <div class="exp-tab active">About</div>
+        <div class="exp-tab">Process</div>
+        <div class="exp-tab">Implementation</div>
+      </div>
+      <div class="exp-content">
+        <p>We are a mix of business oriented minds and creative thinkers, passionate about taking your ideas to the next level. Our team brings together experienced professionals across media, design, technology, HR, and marketing.</p>
+        <p>At UnderGrads, we believe every business — from startups to established brands — deserves a trusted partner that understands both the vision and the execution. We don't just consult, we build alongside you.</p>
+        <p>From ideation to deployment, our end-to-end approach ensures nothing falls through the cracks. Creativity, communication, and confidence are at the heart of everything we do.</p>
+      </div>
+      <div class="stats-col">
+        <div class="stat-item">
+          <div class="stat-num">5+</div>
+          <div class="stat-label">Years in Business</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Completed Projects</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100+</div>
+          <div class="stat-label">Happy Clients</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-logo">UG</div>
+      <p>Your One Stop Solution for Business Consulting &amp; Execution. From planning to implementation in media, design, HR, marketing and tech.</p>
+    </div>
+    <div>
+      <h4>SERVICES</h4>
+      <ul>
+        <li><a href="#">Design &amp; Media Production</a></li>
+        <li><a href="#">Technology &amp; Operational Solutions</a></li>
+        <li><a href="#">Strategy &amp; Business Consulting</a></li>
+        <li><a href="#">Digital Marketing</a></li>
+        <li><a href="#">HR &amp; Manpower</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>COMPANY</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Work</a></li>
+        <li><a href="#">Experience</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">WhatsApp Us</a></li>
+      </ul>
+    </div>
+  </footer>
+</main>
+
+<div class="footer-bottom">
+  <span>© 2026 UnderGrads Media. All rights reserved.</span>
+  <span>undergradusmedia.com</span>
+</div>
+
+<script>
+  // Active nav on scroll
+  const sections = document.querySelectorAll('section[id], div.section');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  const sectionIds = ['home','service','work','experience'];
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && window.scrollY >= el.offsetTop - 120) current = id;
+    });
+
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      const dot = a.querySelector('.dot');
+      if (dot) dot.style.display = 'none';
+      if (a.getAttribute('href') === '#' + current) {
+        a.classList.add('active');
+        if (dot) dot.style.display = 'block';
+      }
+    });
+  });
+
+  // Exp tabs
+  document.querySelectorAll('.exp-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.exp-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
